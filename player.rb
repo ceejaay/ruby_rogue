@@ -7,20 +7,20 @@ class Player
     @y = y
   end
 
-  def right
+  def east
     @x += 20.0
   end
 
-  def left
+  def west
     @x -= 20.0 
   end
 
   def north
-    @y += 20.0
+    @y -= 20.0
   end
 
   def south
-    @y -= 20.0
+    @y += 20.0
   end
 
   def draw

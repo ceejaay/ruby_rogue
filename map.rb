@@ -17,14 +17,12 @@ class Map
   end
 
   def solid?(x, y)
-    if y.between?(@y, @y + 20)
-      elsif
-       @y.between?(y, y + 20)
-      elsif
-        x.between?(@x, @x + 20)
-      elsif
-        @x.between?(x, x + 20)
-      end
+     #y.between?(@y, @y + 20) 
+     if x.between?(@x, @x + 20.0) 
+       return true
+     elsif y.between?(@y, @y + 20)
+       return true
+     end
 #this one evaluates half of it.
       #@x.between?(x, x + 20) 
 #this one keeps it from going south.

@@ -11,7 +11,6 @@ class GameWindow < Gosu::Window
     @text = Gosu::Font.new(20)
     @distance = Gosu::Font.new(20)
     @map_test = Gosu::Font.new(20)
-
   end
 
   def update
@@ -19,11 +18,12 @@ class GameWindow < Gosu::Window
 
   def button_down(id)
        
-     @player.left if id == Gosu::KbLeft
-     @player.right if id == Gosu::KbRight
-     @player.south if id == Gosu::KbUp
-     @player.north if id == Gosu::KbDown
-     close if id == Gosu::KbEscape end
+     @player.west if id == Gosu::KbLeft
+     @player.east if id == Gosu::KbRight
+     @player.north if id == Gosu::KbUp
+     @player.south if id == Gosu::KbDown
+     close if id == Gosu::KbEscape 
+  end
 
   def draw
     @player.draw
@@ -36,11 +36,8 @@ class GameWindow < Gosu::Window
       @map_test.draw("False", 70, 70, 0xff_ffff00)
     end
 
-  end end
-
-
-
-
+  end
+end
 
 window = GameWindow.new
 window.show
