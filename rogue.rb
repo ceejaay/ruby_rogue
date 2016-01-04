@@ -17,7 +17,6 @@ class GameWindow < Gosu::Window
   end
 
   def button_down(id)
-       
      @player.west if id == Gosu::KbLeft
      @player.east if id == Gosu::KbRight
      @player.north if id == Gosu::KbUp
