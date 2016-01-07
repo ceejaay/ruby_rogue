@@ -11,6 +11,7 @@ class GameWindow < Gosu::Window
     @text = Gosu::Font.new(20)
     @distance = Gosu::Font.new(20)
     @map_test = Gosu::Font.new(20)
+
   end
 
   def update
@@ -30,12 +31,13 @@ class GameWindow < Gosu::Window
     @text.draw("Player: X => #{@player.x} Y => #{@player.y}", 10, 30, 0xff_ffff00)
     @distance.draw("#{Gosu::distance(@player.x, @player.y, @map.x, @map.y)}", 50, 50, 0xff_ffff00)
     if @map.solid?(@player.x, @player.y)
-      @map_test.draw("True", 70, 70, 0xff_ffff00)
+      @map_test.draw("True", 10, 60, 0xff_ffff00)
     else
-      @map_test.draw("False", 70, 70, 0xff_ffff00)
-    end
+      @map_test.draw("False", 10, 60, 0xff_ffff00)
+    end 
 
   end
+
 end
 
 window = GameWindow.new
