@@ -14,7 +14,6 @@ class Player
 #need to add and or subtract for the opposite values.
   def east
     @x += 20.0
-
   end
 
   def west
