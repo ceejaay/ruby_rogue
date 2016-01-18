@@ -6,9 +6,10 @@ class GameWindow < Gosu::Window
   def initialize
     super 640, 480
     self.caption = "Rogue"
-    array = [["#", "#", "#", "#", "#"], ["#"], ["#"], ["#"], ["#"]]
+    array = [["#", "#", "#", "#", "#"], ["#","#", "#", "#"], ["#"], ["#"], ["#"]]
     @map_array = []
-    array.each_with_index do |value0, index0| 
+#this is where we create all the map objects
+    array.each_with_index do |value0, index0|
       value0.each_with_index do |value1, index1|
         @map_array << Map.new((index1 * 20), (index0 * 20), value1) if value1 == "#"
       end
@@ -20,6 +21,12 @@ class GameWindow < Gosu::Window
     #@distance = Gosu::Font.new(20)
     #@map_test = Gosu::Font.new(20)
     #@map_coordinates_text = Gosu::Font.new(20)
+  @map_array.each do |item|
+   puts "This is the font thing = > #{item.tile}"
+   puts item.icon
+   puts item.x
+   puts item.y
+   end
 
   end
 
@@ -31,7 +38,7 @@ class GameWindow < Gosu::Window
        when Gosu::KbLeft
          @map_array.each do |map_object|
            if map_object.solid?(@player.x - 20, @player.y)
-             break
+           nil
            else
              @player.west
              break
@@ -41,7 +48,7 @@ class GameWindow < Gosu::Window
        when Gosu::KbRight
          @map_array.each do |map_object|
            if map_object.solid?(@player.x + 20, @player.y)
-             break
+             nil
              else
                @player.east
                break
@@ -51,7 +58,7 @@ class GameWindow < Gosu::Window
        when Gosu::KbUp
          @map_array.each do |map_object|
            if map_object.solid?(@player.x, @player.y - 20)
-             break
+             nil
              else
                @player.north
                break
@@ -61,7 +68,7 @@ class GameWindow < Gosu::Window
        when Gosu::KbDown
          @map_array.each do |map_object|
            if map_object.solid?(@player.x, @player.y + 20)
-             break
+             nil
              else
                @player.south
                break

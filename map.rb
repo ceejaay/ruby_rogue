@@ -13,7 +13,7 @@ class Map
   end
 
   def draw
-    @tile.draw(@icon, @x, @y, 0xff_fff00)
+   # @tile.draw(@icon, @x, @y, 0xff_fff00)
   end
 
   def solid?(x, y)
