@@ -8,10 +8,9 @@ class GameWindow < Gosu::Window
     self.caption = "Rogue"
     array = [["#"], ["#"], ["#"], ["#"], ["#"]]
     @map_array = []
-    @map_tile = Gosu::Font.new(20)
     array.each_with_index do |value0, index0| 
       value0.each_with_index do |value1, index1|
-        @map_array << Map.new((index1 * 20), (index0 * 20)) if value1 == "#"
+        @map_array << Map.new((index1 * 20), (index0 * 20), value1) if value1 == "#"
       end
     end
 
@@ -61,7 +60,7 @@ class GameWindow < Gosu::Window
   def draw
     @player.draw
     @map_array.each do |item|
-      @map_tile.draw("#", item.x, item.y, 0xff_ffff00)
+     item.tile.draw(item.icon, item.x, item.y, 0xff_ffff00)
     end
    # @text.draw("Player: X => #{@player.x} Y => #{@player.y}", 10, 30, 0xff_ffff00)
     #@distance.draw(" Distance between player and tile => #{Gosu::distance(@player.x, @player.y, @map.x, @map.y)}", 50, 50, 0xff_ffff00)

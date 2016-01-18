@@ -2,9 +2,9 @@ require 'gosu'
 
 
 class Map
-    attr_accessor :x, :y, :icon
+    attr_accessor :x, :y, :icon, :tile
 
-  def initialize(x, y)
+  def initialize(x, y, icon)
     #@raw_map = File.readlines("media/map.txt").map {|lines| lines.chomp}
     @x = x
     @y = y
