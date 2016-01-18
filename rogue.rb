@@ -6,14 +6,23 @@ class GameWindow < Gosu::Window
   def initialize
     super 640, 480
     self.caption = "Rogue"
-    @map = Map.new(100, 200)
-    @player = Player.new(100, 300)
-    @text = Gosu::Font.new(20)
-    @distance = Gosu::Font.new(20)
-    @map_test = Gosu::Font.new(20)
-    @map_coordinates_text = Gosu::Font.new(20)
+    array = [["#"], ["#"], ["#"], ["#"], ["#"]]
+    @map_array = []
+    @map_tile = Gosu::Font.new(20)
+    array.each_with_index do |value0, index0| 
+      value0.each_with_index do |value1, index1|
+        @map_array << Map.new((index1 * 20), (index0 * 20)) if value1 == "#"
+      end
+    end
 
-  end 
+
+    @player = Player.new(100, 300)
+    #@text = Gosu::Font.new(20)
+    #@distance = Gosu::Font.new(20)
+    #@map_test = Gosu::Font.new(20)
+    #@map_coordinates_text = Gosu::Font.new(20)
+
+  end
 
   def update
   end
@@ -51,10 +60,14 @@ class GameWindow < Gosu::Window
 
   def draw
     @player.draw
-    @map.draw
-    @text.draw("Player: X => #{@player.x} Y => #{@player.y}", 10, 30, 0xff_ffff00)
-    @distance.draw(" Distance between player and tile => #{Gosu::distance(@player.x, @player.y, @map.x, @map.y)}", 50, 50, 0xff_ffff00)
+    @map_array.each do |item|
+      @map_tile.draw("#", item.x, item.y, 0xff_ffff00)
+    end
+   # @text.draw("Player: X => #{@player.x} Y => #{@player.y}", 10, 30, 0xff_ffff00)
+    #@distance.draw(" Distance between player and tile => #{Gosu::distance(@player.x, @player.y, @map.x, @map.y)}", 50, 50, 0xff_ffff00)
+=begin
     if @map.solid?(@player.x - 20, @player.y)
+
       @map_test.draw("Collision => True", 10, 80, 0xff_ffff00)
     elsif @map.solid?(@player.x + 20, @player.y)
       @map_test.draw("Collision => True", 10, 80, 0xff_ffff00)
@@ -64,11 +77,11 @@ class GameWindow < Gosu::Window
       @map_test.draw("Collision => True", 10, 80, 0xff_ffff00)
     else
       @map_test.draw("Collision => False", 10, 80, 0xff_ffff00)
-    end 
+    end
       @map_coordinates_text.draw("Map X => #{@map.x} Map Y => #{@map.y}", 300, 30, 0xff_ffff00)
   end
-
+=end
 end
-
+end
 window = GameWindow.new
 window.show
