@@ -1,7 +1,7 @@
 require 'gosu'
 require './player'
 require './map'
-
+FONT_COLOR = 0xff_ffff00
 class GameWindow < Gosu::Window
   def initialize
     super 640, 480
@@ -17,11 +17,12 @@ class GameWindow < Gosu::Window
 
 
     @player = Player.new(100, 300)
-    #@text = Gosu::Font.new(20)
-    #@distance = Gosu::Font.new(20)
+    @text = Gosu::Font.new(20)
+    @distance = Gosu::Font.new(20)
     #@map_test = Gosu::Font.new(20)
     #@map_coordinates_text = Gosu::Font.new(20)
   @map_array.each do |item|
+   puts item
    puts "This is the font thing = > #{item.tile}"
    puts item.icon
    puts item.x
@@ -58,7 +59,6 @@ class GameWindow < Gosu::Window
        when Gosu::KbUp
          @map_array.each do |map_object|
            if map_object.solid?(@player.x, @player.y - 20)
-             nil
              else
                @player.north
                break
@@ -86,9 +86,9 @@ class GameWindow < Gosu::Window
 #tile is a method and attribute of the map class
  # same with icon the icon comes from what is in the array. Which is usually a '#' character.
 #the item.x and item.y are the coordinates of the tiles. They come from the map array.
-     item.tile.draw(item.icon, item.x, item.y, 0xff_ffff00)
+     item.tile.draw(item.icon, item.x, item.y, FONT_COLOR)
     end
-   # @text.draw("Player: X => #{@player.x} Y => #{@player.y}", 10, 30, 0xff_ffff00)
+    @text.draw("Player: X => #{@player.x} Y => #{@player.y}", 10, 30, FONT_COLOR)
     #@distance.draw(" Distance between player and tile => #{Gosu::distance(@player.x, @player.y, @map.x, @map.y)}", 50, 50, 0xff_ffff00)
 =begin
     if @map.solid?(@player.x - 20, @player.y)
