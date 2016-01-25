@@ -6,7 +6,7 @@ class GameWindow < Gosu::Window
   def initialize
     super 640, 480
     self.caption = "Rogue"
-    array = File.readlines("media/map.txt").map {|line| line.split}
+    array = File.readlines("media/map.txt").map {|line| line.chomp.split(//)}
     #array = [["#", "#", "#", "#", "#"], ["#","#", "#", "#"], ["#"], ["#"], ["#"]]
     @map_array = []
 #this is where we create all the map objects
